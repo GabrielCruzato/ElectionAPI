@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Election.Migrations
 {
     [DbContext(typeof(ElectionContext))]
-    [Migration("20220929021028_Fixing")]
-    partial class Fixing
+    [Migration("20220929232847_First")]
+    partial class First
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,7 +23,7 @@ namespace Election.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Election.Entities.PoliticalParty", b =>
+            modelBuilder.Entity("Election.Entities.Politician", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -31,20 +31,19 @@ namespace Election.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("PartyName")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PartyNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("PoliticiansNumber")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.ToTable("PoliticalParty");
+                    b.ToTable("politician");
                 });
 
-            modelBuilder.Entity("Election.Entities.Politician", b =>
+            modelBuilder.Entity("Election.Entities.Voter", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -60,26 +59,11 @@ namespace Election.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CpfCnpj")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Ethnicity")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("PoliticalPartyId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("SexualOrientation")
+                    b.Property<string>("Sex")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -89,25 +73,7 @@ namespace Election.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PoliticalPartyId");
-
-                    b.ToTable("politicianModels");
-                });
-
-            modelBuilder.Entity("Election.Entities.Politician", b =>
-                {
-                    b.HasOne("Election.Entities.PoliticalParty", "PoliticalParty")
-                        .WithMany("politicians")
-                        .HasForeignKey("PoliticalPartyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("PoliticalParty");
-                });
-
-            modelBuilder.Entity("Election.Entities.PoliticalParty", b =>
-                {
-                    b.Navigation("politicians");
+                    b.ToTable("Person");
                 });
 #pragma warning restore 612, 618
         }

@@ -5,11 +5,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Election.Persistence
 {
-    public class ElectionContext : DbContext
+    public class ElectionContext : DbContext, IElectionContext
     {
-        public DbSet<Politician> politician { get; set; }
-        public DbSet<PoliticalParty> politicalParty { get; set; }
-        public DbSet<Person> Person { get; set; }
+        public DbSet<Politician> Politicians { get; set; }
+        public DbSet<Voter> Voters { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
