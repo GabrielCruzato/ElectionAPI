@@ -1,5 +1,7 @@
+using Election;
 using Election.Persistence;
 using ElectionAPI.Controllers;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Refit;
 
@@ -9,6 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddSingleton<ElectionContext>();
+builder.Services.AddMediatR(typeof(MediatREntryPoint).Assembly);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

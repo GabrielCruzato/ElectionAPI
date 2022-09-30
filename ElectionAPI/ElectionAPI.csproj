@@ -34,8 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\" />
-    <Folder Include="Services\" />
+    <Folder Include="Controllers\VoterControllers\" />
   </ItemGroup>
 
 </Project>

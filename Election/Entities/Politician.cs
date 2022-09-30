@@ -8,21 +8,11 @@ using System.Threading.Tasks;
 
 namespace Election.Entities
 {
-    public class Politician : Person
-    {
+    public sealed class Politician : BaseEntity
+    {   
 
         [Required]
-        public string CpfCnpj { get; set; }
-
-        [Required]
-        public string State { get; set; }
-
-        [Required]
-        public string City { get; set; }
-
-        [ForeignKey("PoliticalParty")]
-        public int PoliticalPartyId { get; set; }
-        public virtual PoliticalParty PoliticalParty {get; set;}
+        public string Name { get; private set; }
 
     }
 }
