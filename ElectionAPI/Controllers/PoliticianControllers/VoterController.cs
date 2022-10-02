@@ -30,7 +30,7 @@ namespace ElectionAPI.Controllers.PoliticianControllers
 
        
         [HttpPost("PostVoter")]
-        public async Task<IActionResult> AddVoter([FromBody] Voter voter)
+        public async Task<IActionResult> AddVoter([FromBody] VoterModel voter)
         {
             var command = new InsertVoterCommand(voter.Age, voter.Ethnicity, voter.State, voter.City, voter.Sex, voter.PoliticianId);
             var result = await mediator.Send(command);
@@ -39,6 +39,17 @@ namespace ElectionAPI.Controllers.PoliticianControllers
 
         [HttpGet("getallvoters")]
         public async Task<IActionResult> GetAll()
+        {
+            var query = new GetAllVotersQuery();
+
+            var result = await mediator.Send(query);
+
+            return Ok(result);
+        }
+
+
+        [HttpGet("GetElectionPollResult")]
+        public async Task<IActionResult> GetElectionPollResult()
         {
             var query = new GetAllVotersQuery();
 

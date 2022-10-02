@@ -15,6 +15,6 @@ namespace Election.Commands
 
      string City,
 
-     int PoliticianId) : IRequest<Voter>;
+     int PoliticianId) : IRequest<VoterModel>;
 }
 

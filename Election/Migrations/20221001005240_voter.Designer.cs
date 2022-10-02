@@ -11,13 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Election.Migrations
 {
     [DbContext(typeof(ElectionContext))]
-<<<<<<<< HEAD:Election/Migrations/20220930235725_Third.Designer.cs
-    [Migration("20220930235725_Third")]
-    partial class Third
-========
-    [Migration("20220929232847_First")]
-    partial class First
->>>>>>>> 402b9ec68971fc9f9c1918487364131d26296c21:Election/Migrations/20220929232847_First.Designer.cs
+    [Migration("20221001005240_voter")]
+    partial class voter
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -40,18 +35,9 @@ namespace Election.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-<<<<<<<< HEAD:Election/Migrations/20220930235725_Third.Designer.cs
                     b.HasKey("Id");
 
                     b.ToTable("Politicians");
-========
-                    b.Property<int>("PoliticiansNumber")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("politician");
->>>>>>>> 402b9ec68971fc9f9c1918487364131d26296c21:Election/Migrations/20220929232847_First.Designer.cs
                 });
 
             modelBuilder.Entity("Election.Entities.Voter", b =>
@@ -74,12 +60,9 @@ namespace Election.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-<<<<<<<< HEAD:Election/Migrations/20220930235725_Third.Designer.cs
                     b.Property<int>("PoliticianId")
                         .HasColumnType("int");
 
-========
->>>>>>>> 402b9ec68971fc9f9c1918487364131d26296c21:Election/Migrations/20220929232847_First.Designer.cs
                     b.Property<string>("Sex")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -90,24 +73,7 @@ namespace Election.Migrations
 
                     b.HasKey("Id");
 
-<<<<<<<< HEAD:Election/Migrations/20220930235725_Third.Designer.cs
-                    b.HasIndex("PoliticianId");
-
                     b.ToTable("Voters");
-                });
-
-            modelBuilder.Entity("Election.Entities.Voter", b =>
-                {
-                    b.HasOne("Election.Entities.Politician", "Politician")
-                        .WithMany()
-                        .HasForeignKey("PoliticianId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Politician");
-========
-                    b.ToTable("Person");
->>>>>>>> 402b9ec68971fc9f9c1918487364131d26296c21:Election/Migrations/20220929232847_First.Designer.cs
                 });
 #pragma warning restore 612, 618
         }

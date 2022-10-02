@@ -12,7 +12,7 @@ namespace Election.Persistence
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            options.UseSqlServer(@"Data Source=.\SQLEXPRESS;Initial Catalog=politician;Trusted_Connection=True;");
+            options.UseSqlServer(@"Data Source=.\SQLEXPRESS;Initial Catalog=Election;Trusted_Connection=True;");
 
         }
 
