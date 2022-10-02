@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Election.Contracts.Mapping
 {
-    internal class PoliticianProfile : Profile
+    public class PoliticianProfile : Profile
     {
         public PoliticianProfile()
         {

@@ -71,20 +71,7 @@ namespace Election.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PoliticianId");
-
                     b.ToTable("Voters");
-                });
-
-            modelBuilder.Entity("Election.Entities.Voter", b =>
-                {
-                    b.HasOne("Election.Entities.Politician", "Politician")
-                        .WithMany()
-                        .HasForeignKey("PoliticianId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Politician");
                 });
 #pragma warning restore 612, 618
         }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Election.Entities
 {
-    public sealed class Voter
+    public sealed class Voter : BaseEntity
     {
 
         [Required]
