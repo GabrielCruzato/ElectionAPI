@@ -1,4 +1,6 @@
-﻿using Election.Entities;
+﻿using AutoMapper;
+using Election.DTO;
+using Election.Entities;
 using Election.Persistence;
 using Election.Queries.VoterQueries;
 using MediatR;
@@ -14,17 +16,19 @@ namespace Election.Handlers.VoterHandlers
     public class GetAllVotersHandler : IRequestHandler<GetAllVotersQuery, List<Voter>>
     {
         private readonly ElectionContext _context;
+        private readonly IMapper _mapper;
 
-        public GetAllVotersHandler(ElectionContext context)
+        public GetAllVotersHandler(ElectionContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         public async Task<List<Voter>> Handle(GetAllVotersQuery request, CancellationToken cancellationToken)
         {
-            var Result = await _context.Voters.ToListAsync();
+            var entity = await _context.Voters.ToListAsync();
 
-            return Result;
+            return entity;
         }
     }
 }

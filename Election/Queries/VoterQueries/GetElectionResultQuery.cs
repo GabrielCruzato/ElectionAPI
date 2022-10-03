@@ -1,5 +1,4 @@
-﻿using Election.DTO;
-using Election.Entities;
+﻿using Election.Contracts.Models;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -9,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Election.Queries.VoterQueries
 {
-    public record GetAllVotersQuery() : IRequest<List<Voter>>
+    public record GetElectionResultQuery() : IRequest<QuantityOfVotesDto>
     {
     }
 }
