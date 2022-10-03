@@ -12,6 +12,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddCors(p => p.AddPolicy("corsapp", builder =>
+{
+    builder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
+}));
+builder.Services.AddCors();
 builder.Services.AddSingleton<ElectionContext>();
 builder.Services.AddMediatR(typeof(MediatREntryPoint).Assembly);
 builder.Services.AddAutoMapper(typeof(VoterProfile).Assembly, typeof(PoliticianProfile).Assembly);
@@ -37,6 +42,8 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
-    app.MapDefaultControllerRoute();
+app.UseCors("corsapp");
+
+app.MapDefaultControllerRoute();
 
 app.Run();

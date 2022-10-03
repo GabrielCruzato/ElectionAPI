@@ -13,7 +13,7 @@ using RouteAttribute = Microsoft.AspNetCore.Components.RouteAttribute;
 
 namespace ElectionAPI.Controllers.PoliticianControllers
 {
-    [Route("api/VoterController")]
+    [Route("api")]
     [AllowAnonymous]
     [ApiController]
 

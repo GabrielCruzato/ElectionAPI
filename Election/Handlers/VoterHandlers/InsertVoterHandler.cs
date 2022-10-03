@@ -25,7 +25,7 @@ namespace Election.Handlers.VoterHandlers
 
         public async Task<VoterModel> Handle(InsertVoterCommand request, CancellationToken cancellationToken)
         {
-             var entity = new VoterModel();
+                var entity = new VoterModel();
              
 
             entity.Ethnicity = request.Ethnicity;

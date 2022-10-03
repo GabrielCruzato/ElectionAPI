@@ -28,14 +28,19 @@ namespace Election.Handlers.VoterHandlers
 
             foreach(var voter in entity)
             {
-                if(_context.Voters.Any(a => a.PoliticianId == 10))
+                if(_context.Voters.Any(a => a.PoliticianId == 1))
                 {
-                    quantityOfVotes.LeftWingCandidate++;
+                    quantityOfVotes.Bolsonaro++;
+                }
+
+                if(_context.Voters.Any(a => a.PoliticianId == 2))
+                {
+                    quantityOfVotes.Lula++;
                 }
 
                 else
                 {
-                    quantityOfVotes.RightWingCandidate++;
+                    quantityOfVotes.Ciro++;
                 }
             }
 
