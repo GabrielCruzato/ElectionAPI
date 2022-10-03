@@ -51,7 +51,7 @@ namespace ElectionAPI.Controllers.PoliticianControllers
         [HttpGet("GetElectionPollResult")]
         public async Task<IActionResult> GetElectionPollResult()
         {
-            var query = new GetAllVotersQuery();
+            var query = new GetElectionResultQuery();
 
             var result = await mediator.Send(query);
 
