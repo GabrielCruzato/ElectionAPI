@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\VoterControllers\**" />
+    <Content Remove="Controllers\VoterControllers\**" />
+    <EmbeddedResource Remove="Controllers\VoterControllers\**" />
+    <None Remove="Controllers\VoterControllers\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MediatR" Version="11.0.0" />
     <PackageReference Include="MediatR.Contracts" Version="1.0.1" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
@@ -32,10 +39,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Election\Election.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\VoterControllers\" />
   </ItemGroup>
 
 </Project>
