@@ -37,7 +37,6 @@ namespace Election.Handlers.VoterHandlers
 
             var entitymapped = _mapper.Map<Voter>(entity);
             
-
             _context.Voters.Add(entitymapped);
             await _context.SaveChangesAsync();
 

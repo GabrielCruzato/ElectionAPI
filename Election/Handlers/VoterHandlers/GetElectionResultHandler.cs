@@ -23,26 +23,20 @@ namespace Election.Handlers.VoterHandlers
 
         public async Task<QuantityOfVotesDto> Handle(GetElectionResultQuery request, CancellationToken cancellationToken)
         {
-            var entity = await _context.Voters.ToListAsync();
             var quantityOfVotes = new QuantityOfVotesDto();
 
-            foreach(var voter in entity)
-            {
-                if(_context.Voters.Any(a => a.PoliticianId == 1))
-                {
-                    quantityOfVotes.Bolsonaro++;
-                }
+            var total = await _context.Voters.CountAsync();
 
-                if(_context.Voters.Any(a => a.PoliticianId == 2))
-                {
-                    quantityOfVotes.Lula++;
-                }
+            var LulaVotes = await _context.Voters.Where(a => a.PoliticianId == 1).CountAsync();
+            var BolsonaroVotes = await _context.Voters.Where(a => a.PoliticianId == 2).CountAsync();
+            var CiroVotes = await _context.Voters.Where(a => a.PoliticianId == 3).CountAsync();
 
-                else
-                {
-                    quantityOfVotes.Ciro++;
-                }
-            }
+
+            quantityOfVotes.Lula = (int)Math.Round((double)(100 * LulaVotes) / total);
+
+            quantityOfVotes.Bolsonaro = (int)Math.Round((double)(100 * BolsonaroVotes) / total);
+
+            quantityOfVotes.Ciro = (int)Math.Round((double)(100 * CiroVotes) / total);
 
             return quantityOfVotes;
 
